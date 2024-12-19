@@ -77,14 +77,14 @@ namespace ClashN.Handler
                 }
                 else if (type == SysProxyType.Pac)
                 {
-                    PacHandler.Start(Utils.GetConfigPath(), port, config.PacPort);
+                    PacLib.PacHandler.Start(Utils.GetConfigPath(), port, config.PacPort);
                     var strProxy = $"{Global.httpProtocol}{Global.Loopback}:{config.PacPort}/pac?t={DateTime.Now.Ticks}";
                     SetIEProxy(false, strProxy, "");
                 }
 
                 if (type != SysProxyType.Pac)
                 {
-                    PacHandler.Stop();
+                    PacLib.PacHandler.Stop();
                 }
             }
             catch (Exception ex)
